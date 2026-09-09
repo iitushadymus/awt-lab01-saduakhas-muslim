@@ -19,7 +19,7 @@ export default async function CoursesPage() {
         </p>
       </header>
 
-      <div className="mt-12 border-b border-rule">
+      <div className="-mx-4 mt-12 border-b border-rule">
         {courses.map((course) => (
           <CourseCard
             key={course.id}

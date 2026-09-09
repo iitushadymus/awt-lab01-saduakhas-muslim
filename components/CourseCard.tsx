@@ -18,7 +18,7 @@ export default function CourseCard({
   return (
     <Link
       href={`/courses/${id}`}
-      className="group -mx-4 block border-t border-rule px-4 py-6 hover:bg-ink/[0.03]"
+      className="group block border-t border-rule px-4 py-6 hover:bg-ink/[0.03]"
     >
       <div className="flex items-baseline justify-between gap-6">
         <h2 className="text-2xl leading-snug decoration-1 underline-offset-6 group-hover:underline">
