@@ -13,10 +13,10 @@ export default function AboutPage() {
 
       <div className="mt-6 space-y-4 text-lg text-muted">
         <p>
-          Course Handbook is the semester project for Advanced Web Technologies
-          at IITU. It lists the six courses of the programme, each with its
-          credit weight and a one-line summary of what the course actually
-          covers.
+          Course Handbook is the semester project of Muslim Saduakhas for
+          Advanced Web Technologies at IITU. It lists the six courses of the
+          programme, each with its credit weight and a one-line summary of what
+          the course actually covers.
         </p>
         <p>
           The catalog is built with the Next.js App Router: every page here is
@@ -30,6 +30,16 @@ export default function AboutPage() {
           does.
         </p>
       </div>
+
+      <p className="label mt-12 border-t border-rule pt-6 text-muted">
+        Muslim Saduakhas · IT3-2301CS ·{" "}
+        <a
+          href="https://github.com/musq1337/course-catalog"
+          className="underline-offset-6 hover:text-brick hover:underline"
+        >
+          github.com/musq1337/course-catalog
+        </a>
+      </p>
     </div>
   );
 }

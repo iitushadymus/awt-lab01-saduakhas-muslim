@@ -3,6 +3,9 @@
 A small course catalog built for **Lab 1** of Advanced Web Technologies (IITU) —
 Next.js 16 with the App Router, TypeScript and Tailwind CSS v4.
 
+**Author:** Muslim Saduakhas ([@musq1337](https://github.com/musq1337))
+**Course:** Advanced Web Technologies, IITU, Group: IT3-2301CS
+
 ## Running it
 
 ```bash
@@ -45,3 +48,7 @@ Styled as a printed handbook rather than a dashboard: warm paper background,
 Newsreader for anything you read, IBM Plex Mono for catalog metadata, hairline
 rules instead of drop shadows, and a single brick accent reserved for links and
 the heart.
+
+---
+
+© 2026 Muslim Saduakhas · IITU, IT3-2301CS · MIT licensed

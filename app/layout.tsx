@@ -22,7 +22,11 @@ export const metadata: Metadata = {
     template: "%s · Course Handbook",
   },
   description:
-    "A small catalog of the courses on offer this semester, built for Advanced Web Technologies at IITU.",
+    "A small catalog of the courses on offer this semester, built by Muslim Saduakhas for Advanced Web Technologies at IITU.",
+  authors: [
+    { name: "Muslim Saduakhas", url: "https://github.com/musq1337" },
+  ],
+  creator: "Muslim Saduakhas",
 };
 
 const navigation = [
@@ -60,9 +64,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
 
         <footer className="mx-auto w-full max-w-2xl px-6 pb-10">
-          <p className="label text-muted">
-            IITU · Advanced Web Technologies · Autumn 2026
-          </p>
+          <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-rule pt-6">
+            <p className="label text-ink">
+              Built by{" "}
+              <a
+                href="https://github.com/musq1337"
+                className="underline-offset-6 hover:text-brick hover:underline"
+              >
+                Muslim Saduakhas
+              </a>
+            </p>
+            <p className="label text-muted">
+              IITU · IT3-2301CS · Advanced Web Technologies
+            </p>
+          </div>
         </footer>
       </body>
     </html>
