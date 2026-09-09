@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Course Handbook
 
-## Getting Started
+A small course catalog built for **Lab 1** of Advanced Web Technologies (IITU) —
+Next.js 16 with the App Router, TypeScript and Tailwind CSS v4.
 
-First, run the development server:
+## Running it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # also verifies generateStaticParams
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Routes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Route            | File                        | Notes                                                  |
+| ---------------- | --------------------------- | ------------------------------------------------------ |
+| `/`              | `app/page.tsx`              | Static server component, links into the catalog         |
+| `/about`         | `app/about/page.tsx`        | Static server component                                 |
+| `/courses`       | `app/courses/page.tsx`      | Awaits `getCourses()` in the component body             |
+| `/courses/[id]`  | `app/courses/[id]/page.tsx` | Awaited `params`, `generateStaticParams`, `notFound()`  |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`app/courses/[id]/loading.tsx` covers the 300 ms the mock data takes to resolve;
+`app/courses/not-found.tsx` catches any id that is not in the catalog — try
+`/courses/does-not-exist`.
 
-## Learn More
+## Components
 
-To learn more about Next.js, take a look at the following resources:
+- `components/CourseCard.tsx` — server component. The whole card is a `Link`, so
+  it needs no client-side JavaScript.
+- `components/LikeButton.tsx` — the only client component in the project. The
+  like count is `useState`, so it resets on reload; persisting it is a job for
+  the FastAPI backend later in the semester.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Data
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`lib/courses.ts` holds six hard-coded courses behind `getCourses()` and
+`getCourse(id)`, both artificially delayed by 300 ms to stand in for a network
+round trip. Nothing else in the app knows the data is fake, so swapping in a
+real API should stay contained to that module.
 
-## Deploy on Vercel
+## Design notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Styled as a printed handbook rather than a dashboard: warm paper background,
+Newsreader for anything you read, IBM Plex Mono for catalog metadata, hairline
+rules instead of drop shadows, and a single brick accent reserved for links and
+the heart.
