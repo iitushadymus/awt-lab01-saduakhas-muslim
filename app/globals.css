@@ -1,1 +1,37 @@
 @import "tailwindcss";
+
+@theme {
+  --color-paper: #faf8f4;
+  --color-ink: #1c1a17;
+  --color-muted: #6d675d;
+  --color-rule: #ded7c9;
+  --color-brick: #9c3b2c;
+
+  --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
+}
+
+html {
+  color-scheme: light;
+  background-color: var(--color-paper);
+}
+
+body {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: color-mix(in oklab, var(--color-brick) 18%, transparent);
+}
+
+/* The label style used for every piece of catalog metadata:
+   credit counts, section headers, breadcrumbs, nav. */
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
