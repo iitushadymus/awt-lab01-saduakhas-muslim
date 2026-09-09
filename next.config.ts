@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Next writes extra instruction files into the project root otherwise.
+  agentRules: false,
 };
 
 export default nextConfig;
