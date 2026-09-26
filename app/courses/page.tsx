@@ -11,15 +11,15 @@ export default async function CoursesPage() {
   return (
     <div>
       <header className="max-w-xl">
-        <p className="label text-muted">{courses.length} courses on offer</p>
+        <p className="label text-muted-foreground">{courses.length} courses on offer</p>
         <h1 className="mt-5 text-3xl leading-snug">The course list</h1>
-        <p className="mt-4 text-muted">
+        <p className="mt-4 text-muted-foreground">
           Pick one to read the full description and see how many people have
           marked it.
         </p>
       </header>
 
-      <div className="-mx-4 mt-12 border-b border-rule">
+      <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {courses.map((course) => (
           <CourseCard
             key={course.id}
@@ -28,6 +28,7 @@ export default async function CoursesPage() {
             description={course.description}
             credits={course.credits}
             likes={course.likes}
+            isElective={course.isElective}
           />
         ))}
       </div>

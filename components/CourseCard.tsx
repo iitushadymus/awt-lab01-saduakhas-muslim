@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 type CourseCardProps = {
   id: string;
@@ -6,6 +9,7 @@ type CourseCardProps = {
   description: string;
   credits: number;
   likes: number;
+  isElective: boolean;
 };
 
 export default function CourseCard({
@@ -14,27 +18,43 @@ export default function CourseCard({
   description,
   credits,
   likes,
+  isElective,
 }: CourseCardProps) {
   return (
-    <Link
-      href={`/courses/${id}`}
-      className="group block border-t border-rule px-4 py-6 hover:bg-ink/[0.03]"
-    >
-      <div className="flex items-baseline justify-between gap-6">
-        <h2 className="text-2xl leading-snug decoration-1 underline-offset-6 group-hover:underline">
-          {title}
-        </h2>
-        <span className="label shrink-0 text-muted">{credits} cr</span>
-      </div>
+    <Link href={`/courses/${id}`} className="group block h-full">
+      <Card className="h-full border border-rule ring-0 transition hover:border-brick/40 hover:shadow-md dark:hover:border-brick/60 dark:hover:shadow-black/40">
+        <CardHeader>
+          <Badge variant={isElective ? "outline" : "secondary"} className="label mb-2">
+            {isElective ? "Elective" : "Core"}
+          </Badge>
+          <CardTitle className="text-lg decoration-1 underline-offset-4 group-hover:underline">
+            {title}
+          </CardTitle>
+        </CardHeader>
 
-      <p className="mt-2 text-muted">{description}</p>
+        <CardContent className="flex grow flex-col gap-3">
+          <p className="grow text-base text-muted-foreground">{description}</p>
 
-      <p className="label mt-4 text-muted">
-        <span aria-hidden className="text-brick">
-          ♥
-        </span>{" "}
-        {likes}
-      </p>
+          <div className="flex items-center justify-between">
+            <span className="label text-muted-foreground">{credits} credits</span>
+
+            {/* Display only: the whole card is the link, so the button is kept
+                out of the tab order. The working like button is on the course page. */}
+            <Button
+              variant="ghost"
+              size="sm"
+              tabIndex={-1}
+              aria-label={`${likes} likes`}
+              className="label"
+            >
+              <span aria-hidden className="text-brick">
+                ♥
+              </span>
+              {likes}
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
     </Link>
   );
 }

@@ -3,13 +3,13 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <div className="max-w-xl">
-      <p className="label text-muted">Autumn semester</p>
+      <p className="label text-muted-foreground">Autumn semester</p>
 
       <h1 className="mt-5 text-4xl leading-[1.15] text-balance">
         Every course on offer, on one page.
       </h1>
 
-      <p className="mt-6 text-lg text-muted">
+      <p className="mt-6 text-lg text-muted-foreground">
         The Course Handbook is the plain version of the curriculum: what each
         course covers, how many credits it carries, and nothing else competing
         for your attention.

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import LikeButton from "@/components/LikeButton";
+import { Badge } from "@/components/ui/badge";
 import { getCourse, getCourses } from "@/lib/courses";
 
 type CoursePageProps = {
@@ -35,7 +36,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
     <article className="max-w-xl">
       <Link
         href="/courses"
-        className="label text-muted underline-offset-6 hover:text-ink hover:underline"
+        className="label text-muted-foreground underline-offset-6 hover:text-ink hover:underline"
       >
         ← All courses
       </Link>
@@ -44,9 +45,17 @@ export default async function CoursePage({ params }: CoursePageProps) {
         {course.title}
       </h1>
 
-      <p className="label mt-4 text-muted">
-        {course.credits} credits · {course.isElective ? "Elective" : "Core"}
-      </p>
+      <div className="mt-4 flex items-center gap-3">
+        <Badge
+          variant={course.isElective ? "outline" : "secondary"}
+          className="label"
+        >
+          {course.isElective ? "Elective" : "Core"}
+        </Badge>
+        <p className="label text-muted-foreground">
+          {course.credits} credits
+        </p>
+      </div>
 
       <p className="mt-8 text-lg">{course.description}</p>
 

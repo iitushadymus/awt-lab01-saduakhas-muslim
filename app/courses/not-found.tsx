@@ -3,11 +3,11 @@ import Link from "next/link";
 export default function CourseNotFound() {
   return (
     <div className="max-w-xl">
-      <p className="label text-muted">404</p>
+      <p className="label text-muted-foreground">404</p>
 
       <h1 className="mt-5 text-3xl leading-snug">No course under that id</h1>
 
-      <p className="mt-4 text-muted">
+      <p className="mt-4 text-muted-foreground">
         The link is either stale or points at a course that was never in the
         catalog.
       </p>

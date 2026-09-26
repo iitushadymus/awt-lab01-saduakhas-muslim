@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 type LikeButtonProps = {
   initialLikes: number;
@@ -10,16 +11,17 @@ export default function LikeButton({ initialLikes }: LikeButtonProps) {
   const [likes, setLikes] = useState<number>(initialLikes);
 
   return (
-    <button
-      type="button"
+    <Button
+      variant="brick"
+      size="lg"
       onClick={() => setLikes((current) => current + 1)}
       aria-label={`Mark this course. ${likes} marks so far`}
-      className="label inline-flex items-center gap-2 border border-rule px-4 py-2 text-ink hover:border-brick hover:text-brick"
+      className="label gap-2 px-4"
     >
       <span aria-hidden className="text-brick">
         ♥
       </span>
       {likes}
-    </button>
+    </Button>
   );
 }
