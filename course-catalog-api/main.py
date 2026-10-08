@@ -24,6 +24,7 @@ def pagination(
 def list_courses(
     is_elective: bool | None = None,
     sort: Literal["popular", "title"] = "popular",
+    q: str | None = None,
     p: dict = Depends(pagination),
 ):
     courses = get_all_courses()
@@ -31,6 +32,10 @@ def list_courses(
     # "is not None", not a truthiness check: ?is_elective=false must still filter.
     if is_elective is not None:
         courses = [c for c in courses if c.is_elective == is_elective]
+
+    # Case-insensitive substring search by title.
+    if q:
+        courses = [c for c in courses if q.lower() in c.title.lower()]
 
     if sort == "title":
         courses = sorted(courses, key=lambda c: c.title)
