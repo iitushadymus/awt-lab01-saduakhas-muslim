@@ -1,3 +1,5 @@
+from typing import Literal
+
 from fastapi import Depends, FastAPI, HTTPException
 
 from data import find_course, get_all_courses
@@ -18,7 +20,7 @@ def pagination(page: int = 1, page_size: int = 20):
 @app.get("/courses", response_model=list[Course])
 def list_courses(
     is_elective: bool | None = None,
-    sort: str = "popular",
+    sort: Literal["popular", "title"] = "popular",
     p: dict = Depends(pagination),
 ):
     courses = get_all_courses()
