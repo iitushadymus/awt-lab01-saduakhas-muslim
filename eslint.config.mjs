@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Python backend (Lab 4) lives in its own folder.
+    "course-catalog-api/**",
   ]),
 ]);
 
